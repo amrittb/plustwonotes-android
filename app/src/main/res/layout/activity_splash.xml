@@ -7,12 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
 
-    <ImageView
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/hero_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/hero_bg"
-        android:scaleType="centerCrop" />
+        android:src="@drawable/hero_bg" />
 
     <LinearLayout
         android:orientation="vertical"
