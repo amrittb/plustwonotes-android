@@ -13,20 +13,18 @@
         android:layout_height="match_parent"
         android:src="@drawable/hero_bg" />
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:padding="4dp">
+        android:padding="@dimen/spacing_normal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="50dp"
+            android:layout_margin="@dimen/spacing_huge"
             app:srcCompat="@drawable/ic_plustwonotes" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>
