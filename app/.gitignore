@@ -1,1 +1,5 @@
 /build
+
+# Build Type Specific API Properties
+plustwonotes-api.debug.properties
+plustwonotes-api.release.properties

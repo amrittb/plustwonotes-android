@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply from: 'app-config.gradle'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -10,22 +12,36 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
+
+            Properties properties = getDebugProperties()
+
+            buildConfigField("String","PLUSTWONOTES_API_URL",properties.getProperty("plustwonotes.api.url",""))
+            buildConfigField("String","PLUSTWONOTES_API_ID",properties.getProperty("plustwonotes.api.id",""))
+            buildConfigField("String","PLUSTWONOTES_API_SECRET",properties.getProperty("plustwonotes.api.secret",""))
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            Properties properties = getReleaseProperties()
+
+            buildConfigField("String","PLUSTWONOTES_API_URL",properties.getProperty("plustwonotes.api.url",""))
+            buildConfigField("String","PLUSTWONOTES_API_ID",properties.getProperty("plustwonotes.api.id",""))
+            buildConfigField("String","PLUSTWONOTES_API_SECRET",properties.getProperty("plustwonotes.api.secret",""))
         }
     }
 }
 
 dependencies {
     // Local dependencies
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
 
     // Support Dependencies
     compile 'com.android.support:appcompat-v7:24.2.0'
@@ -33,9 +49,12 @@ dependencies {
     // KenBurns View
     compile 'com.flaviofaria:kenburnsview:1.0.7'
 
+    // Networking
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
     // Test Compile
     testCompile 'junit:junit:4.12'
-
     // Android Test Compile
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'

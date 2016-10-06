@@ -1,0 +1,3 @@
+plustwonotes.api.url="http://example.com/api/"
+plustwonotes.api.id="identifier"
+plustwonotes.api.secret="secret"
